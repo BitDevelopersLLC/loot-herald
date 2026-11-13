@@ -36,3 +36,4 @@
 
 ### Notes
 - Owner approved: committed v0.1.0, created the public repo `BitDevelopersLLC/loot-herald` and pushed. Deleted the transfer package. The Dropbox copy is to be archived by the owner on Windows.
+- GitHub: added topics, turned on Discussions, ran "Game version watch" once by hand. The setting that lets Actions create and approve pull requests was not changed (the auto-mode classifier blocked it); the owner sets it in the repo settings.
