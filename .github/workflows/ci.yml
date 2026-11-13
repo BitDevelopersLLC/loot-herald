@@ -29,7 +29,7 @@ jobs:
       - uses: actions/checkout@v4
       - name: Build addon zip
         run: zip -r "LootHerald-${GITHUB_REF_NAME}.zip" LootHerald
-      - uses: softprops/action-gh-release@v2
+      - uses: softprops/action-gh-release@v3
         with:
           files: LootHerald-*.zip
           generate_release_notes: true
