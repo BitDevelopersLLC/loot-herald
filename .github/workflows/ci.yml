@@ -10,7 +10,7 @@ jobs:
   test:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v7
       - uses: leafo/gh-actions-lua@v10
         with:
           luaVersion: "5.1"
@@ -26,7 +26,7 @@ jobs:
     permissions:
       contents: write
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v7
       - name: Build addon zip
         run: zip -r "LootHerald-${GITHUB_REF_NAME}.zip" LootHerald
       - uses: softprops/action-gh-release@v2
