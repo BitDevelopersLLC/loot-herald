@@ -1,0 +1,35 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+    tags: ["v*"]
+  pull_request:
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: leafo/gh-actions-lua@v10
+        with:
+          luaVersion: "5.1"
+      - name: Run offline tests
+        run: lua tests/run_tests.lua
+      - name: Test the game version watcher
+        run: python3 -m unittest discover -s tests -p "test_*.py" -v
+
+  release:
+    needs: test
+    if: startsWith(github.ref, 'refs/tags/v')
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/checkout@v4
+      - name: Build addon zip
+        run: zip -r "LootHerald-${GITHUB_REF_NAME}.zip" LootHerald
+      - uses: softprops/action-gh-release@v2
+        with:
+          files: LootHerald-*.zip
+          generate_release_notes: true

@@ -1,0 +1,34 @@
+## Interface: 16001
+## Title: |cffd4af37Loot Herald|r
+## Notes: Tells you when a dungeon drop is an upgrade for your class and role, so you know when to roll Need.
+## Author: BitDevelopers LLC
+## Version: 0.1.0
+## SavedVariables: LootHeraldDB
+## SavedVariablesPerCharacter: LootHeraldCharDB
+## IconTexture: Interface\Icons\INV_Misc_Bag_10
+## Category: Loot
+## X-License: MIT
+## X-Website: https://github.com/BitDevelopersLLC/loot-herald
+
+Core\Init.lua
+
+Data\Profiles.lua
+Data\ClassRules.lua
+Data\TooltipPatterns.lua
+
+Core\Scoring.lua
+Core\ItemReader.lua
+Core\Compare.lua
+Core\Role.lua
+Core\Judge.lua
+Core\Announce.lua
+
+UI\Theme.lua
+UI\AlertFrame.lua
+UI\RolePicker.lua
+UI\Options.lua
+UI\Tooltip.lua
+
+Core\SelfTest.lua
+Core\Events.lua
+Core\Slash.lua

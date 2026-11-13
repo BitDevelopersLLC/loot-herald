@@ -1,0 +1,10 @@
+*.zip
+.release/
+.DS_Store
+Thumbs.db
+*conflicted copy*
+.claude/
+trademark-search/
+__pycache__/
+*.pyc
+*.tar.gz

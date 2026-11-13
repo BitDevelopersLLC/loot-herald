@@ -1,0 +1,33 @@
+name: Game version watch
+
+# Checks Blizzard's patch server for new WoW Forever builds every 6 hours.
+# New game version -> pull request (TOC interface bump) + checklist issue.
+# New hotfix build  -> comment on the "Game build log" issue.
+# Needs: Settings > Actions > General > "Allow GitHub Actions to create and
+# approve pull requests" turned on.
+on:
+  schedule:
+    - cron: "17 */6 * * *"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+  issues: write
+  pull-requests: write
+
+concurrency:
+  group: game-watch
+  cancel-in-progress: false
+
+jobs:
+  watch:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Check for new WoW Forever builds
+        run: python tools/check_game_version.py --apply
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
